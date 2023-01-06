@@ -1,19 +1,11 @@
 import { useEffect, useState } from 'react';
-import {
-  useParams,
-  useLocation,
-  Outlet,
-  Link,
-  useNavigate,
-} from 'react-router-dom';
+import { useParams, useLocation, Outlet, Link } from 'react-router-dom';
 import { Section } from '../components/Section';
 import { fetchMovie } from '../utils/fetchAPI';
 
 const Movie = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMovie(movieId)
