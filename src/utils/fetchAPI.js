@@ -11,9 +11,6 @@ export const fetchTrending = async page => {
       `${BASE_URL}trending/movie/week?api_key=${API_KEY}&page=${page}`
     );
 
-    // console.log('fetchTrending');
-    // console.log(response);
-
     return response;
   } catch (error) {
     console.error(error);
@@ -27,9 +24,6 @@ export const fetchSearch = async (query, page) => {
     const response = await axios(
       `${BASE_URL}search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=${page}&include_adult=false`
     );
-
-    // console.log('fetchSearch');
-    // console.log(response);
 
     return response;
   } catch (error) {
@@ -45,9 +39,6 @@ export const fetchMovie = async id => {
       `${BASE_URL}movie/${id}?api_key=${API_KEY}&language=en-US`
     );
 
-    // console.log('fetchMovie');
-    // console.log(response);
-
     return response;
   } catch (error) {
     console.error(error);
@@ -61,8 +52,6 @@ export const fetchActors = async id => {
     const response = await axios(
       `${BASE_URL}movie/${id}/credits?api_key=${API_KEY}&language=en-US`
     );
-    // console.log('fetchActors');
-    // console.log(response);
 
     return response;
   } catch (error) {
@@ -77,8 +66,6 @@ export const fetchReviews = async (id, page) => {
     const response = await axios(
       `${BASE_URL}movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=${page}`
     );
-    // console.log('fetchReviews');
-    // console.log(response);
 
     return response;
   } catch (error) {

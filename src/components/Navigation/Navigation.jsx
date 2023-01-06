@@ -12,10 +12,19 @@ export const Navigation = () => {
       <NavigationStyled>
         <NavListStyled>
           <NavListItemStyled>
-            <NavLinkStyled to="/tranding">🆃RANDING</NavLinkStyled>
+            <NavLinkStyled to="/">🆃OP20 MOVIES</NavLinkStyled>
+          </NavListItemStyled>
+          <NavListItemStyled>
+            <NavLinkStyled to="/tranding">🅽EXT20</NavLinkStyled>
+          </NavListItemStyled>
+          <NavListItemStyled>
+            <NavLinkStyled to="/search">🆂EARCH</NavLinkStyled>
           </NavListItemStyled>
           <NavListItemStyled>
             <NavLinkStyled to="/movies">🅼OVIES</NavLinkStyled>
+          </NavListItemStyled>
+          <NavListItemStyled>
+            <NavLinkStyled to="/about">🅰BOUT</NavLinkStyled>
           </NavListItemStyled>
         </NavListStyled>
       </NavigationStyled>

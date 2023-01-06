@@ -27,14 +27,14 @@ export const Pagination = ({ page, totalPages, changePage }) => {
   return (
     <PaginationContainerStyled>
       <PaginationButtonStyled
-        disabled={page === 1}
+        disabled={Number(page) === 1}
         onClick={clickHandler}
         name="start"
       >
         first
       </PaginationButtonStyled>
       <PaginationButtonStyled
-        disabled={page === 1}
+        disabled={Number(page) === 1}
         onClick={clickHandler}
         name="back"
       >
@@ -46,14 +46,14 @@ export const Pagination = ({ page, totalPages, changePage }) => {
       </PaginationPagesCounterStyled>
 
       <PaginationButtonStyled
-        disabled={page === totalPages}
+        disabled={Number(page) === Number(totalPages)}
         onClick={clickHandler}
         name="forward"
       >
         +1
       </PaginationButtonStyled>
       <PaginationButtonStyled
-        disabled={page === totalPages}
+        disabled={Number(page) === Number(totalPages)}
         onClick={clickHandler}
         name="finish"
       >

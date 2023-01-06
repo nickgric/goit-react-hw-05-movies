@@ -1,40 +1,39 @@
 import { Routes, Route } from 'react-router-dom';
-
-// fetch
-// import {
-//   fetchTrending,
-//   fetchSearch,
-//   fetchMovie,
-//   fetchActors,
-//   fetchReviews,
-// } from '../utils/fetchAPI';
-
-import { Actors } from '../pages/Actors';
-import { Tranding } from '../pages/Tranding';
-import { Movie } from '../pages/Movie';
-import { NotFound } from '../pages/NotFound';
-import { Reviews } from '../pages/Reviews';
-import { Search } from '../pages/Search';
+import { lazy, Suspense } from 'react';
 
 import { HomeworkTitle } from './HomeworkTitle';
 import { Navigation } from './Navigation';
+
+const Actors = lazy(() => import('../pages/Actors'));
+const Tranding = lazy(() => import('../pages/Tranding'));
+const Movie = lazy(() => import('../pages/Movie'));
+const Movies = lazy(() => import('../pages/Movies'));
+const NotFound = lazy(() => import('../pages/NotFound'));
+const Reviews = lazy(() => import('../pages/Reviews'));
+const Search = lazy(() => import('../pages/Search'));
+const About = lazy(() => import('../pages/About'));
 
 export const App = () => {
   return (
     <>
       <HomeworkTitle title="React-HW05 '🅼OVIES' @nickgric" />
       <Navigation />
-
-      <Routes>
-        <Route path="/tranding" element={<Tranding />} />
-        <Route path="/tranding/:page" element={<Tranding />} />
-        <Route path="/movies" element={<Search />} />
-        <Route path="/movies/:movieSlug/:movieId" element={<Movie />}>
-          <Route path="cast" element={<Actors />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Tranding />} />
+          <Route path="/tranding" element={<Tranding />} />
+          <Route path="/tranding/:page" element={<Tranding />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/search/:query/:page" element={<Search />} />
+          <Route path="/movies/" element={<Movies />}></Route>
+          <Route path="/movies/:movieSlug/:movieId" element={<Movie />}>
+            <Route path="actors" element={<Actors />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </>
   );
 };
