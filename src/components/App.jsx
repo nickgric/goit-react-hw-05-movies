@@ -3,6 +3,7 @@ import { lazy, Suspense } from 'react';
 
 import { HomeworkTitle } from './HomeworkTitle';
 import { Navigation } from './Navigation';
+import { Section } from './Section';
 
 const Actors = lazy(() => import('../pages/Actors'));
 const Tranding = lazy(() => import('../pages/Tranding'));
@@ -18,7 +19,7 @@ export const App = () => {
     <>
       <HomeworkTitle title="React-HW05 '🅼OVIES' @nickgric" />
       <Navigation />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Section title="Loading..." />}>
         <Routes>
           <Route path="/" element={<Tranding />} />
           <Route path="/tranding" element={<Tranding />} />

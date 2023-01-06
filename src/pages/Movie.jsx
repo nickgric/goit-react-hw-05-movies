@@ -20,8 +20,8 @@ const Movie = () => {
       .then(response => {
         setMovie(response.data);
       })
-      .catch(error => error && navigate(`/`));
-  }, [movieId, navigate]);
+      .catch(error => console.log(error));
+  }, [movieId]);
 
   const { state } = useLocation();
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 import { fetchSearch } from '../utils/fetchAPI';
 
@@ -15,6 +15,7 @@ const Search = () => {
   const [totalPages, setTotalPages] = useState(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
   const params = useParams();
 
   useEffect(() => {
@@ -23,11 +24,11 @@ const Search = () => {
     }
     fetchSearch(query, page)
       .then(response => {
-        setMovies(response.data.results);
         setTotalPages(response.data.total_pages);
+        setMovies(response.data.results);
       })
-      .catch(error => error && navigate(`/`));
-  }, [query, page, navigate]);
+      .catch(error => console.log(error));
+  }, [query, page]);
 
   useEffect(() => {
     if (params.page && params.query) {
@@ -45,7 +46,7 @@ const Search = () => {
       setQuery('Harry potter');
       return;
     }
-  }, [params]);
+  }, [params, totalPages, location]);
 
   const changePage = newPage => {
     navigate(`/search/${query}/${newPage}`);

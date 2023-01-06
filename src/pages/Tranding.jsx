@@ -17,15 +17,17 @@ const Tranding = () => {
   const params = useParams();
 
   useEffect(() => {
-    fetchTrending(page)
-      .then(response => {
-        setMovies(response.data.results);
-        setTotalPages(response.data.total_pages);
-      })
-      .catch(error => error && navigate(`/`));
-  }, [page, totalPages, navigate]);
+    fetchTrending(page).then(response => {
+      setMovies(response.data.results);
+      setTotalPages(response.data.total_pages);
+    });
+  }, [page]);
 
   useEffect(() => {
+    console.log(totalPages);
+    if (params.page > totalPages) {
+      return;
+    }
     if (location.pathname === '/tranding') {
       navigate(`/tranding/2`);
       return;
